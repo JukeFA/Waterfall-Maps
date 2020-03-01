@@ -23,10 +23,31 @@
         <script>
             var map;
             function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 35.492254, lng: -82.526401}, 
-                zoom: 10
-            });
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: 35.492254, lng: -82.526401}, 
+                    zoom: 10
+                })
+            
+                var script = map.data.loadGeoJson('map.json');
+                
+                window = function(results) {
+                    for (var i = 0; i < results.features.length; i++) {
+                        const coords = results.features[i].geometry.coordinates;
+                        const latLng = new google.maps.LatLng(coords[1],coords[0]);
+                        const marker = new google.maps.Marker({
+                            position: latLng,
+                            map: map,
+                        });
+                        // TODO THIS CODE IS STILL NOT WORKING
+                        var infowindow = new google.maps.InfoWindow({
+                            content: "testing"
+                        });
+                        // THIS CODE IS STILL NOT WORKING
+                        window.marker.addListener('click', function() {
+                            infowindow.open(map, marker);
+                        });
+                    }
+                }
             }
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJsw56Pe-TX7YOw9l2XQlREtw6zKqeeA0&callback=initMap"

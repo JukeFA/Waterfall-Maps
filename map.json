@@ -1,0 +1,20 @@
+{
+    "type":"FeatureCollection",
+    "features":[
+        {"type":"Feature",
+            "properties":{
+                "name":"Sliding Rock Falls",
+                "beautyRating":1,
+                "elevation":"2680 Feet",
+                "hikeDistance":"0.1 Mile",
+                "hikeDifficulty":"Easy",
+                "photoRating":8,
+                "canopy":"open"
+            },
+            "geometry":{
+                "type":"Point",
+                "coordinates":[-82.7888177,35.318967]
+            }
+        }
+    ]
+}
