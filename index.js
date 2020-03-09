@@ -1,3 +1,5 @@
+// Key = AIzaSyDJsw56Pe-TX7YOw9l2XQlREtw6zKqeeA0
+
 var map;
 var icon = "http://path/to/icon.png";
 var json = "http://path/to/universities.json";
@@ -48,22 +50,18 @@ function initMap() {
           // icon: icon,
             title: data.title
         });
-
-        var details = data.website + ", " + data.phone + ".";
+        console.log()
+        var details = `${data.title} <br> ${data.website} <br> ${data.phone}`
 
         bindInfoWindow(marker, map, infowindow, details);
-
-        //    });
-
-        });
-
-    }
+    });
+}
 
     function bindInfoWindow(marker, map, infowindow, strDescription) {
         google.maps.event.addListener(marker, 'click', function() {
             infowindow.setContent(strDescription);
             infowindow.open(map, marker);
         });
-}
+    }
 
-    google.maps.event.addDomListener(window, 'load', initialize);
+    google.maps.event.addDomListener(window, 'load', initMap);
