@@ -17,30 +17,18 @@ function initMap() {
 
       //  $.getJSON(json, function(json1) {
     var json1 = {
-        "universities": [{
-            "title": "Aberystwyth University",
-            "website": "www.aber.ac.uk",
-            "phone": "+44 (0)1970 623 111",
+        "waterfalls": [{
+            "title": "falls",
+            "beauty": 5,
+            "photo": 2,
+            "hDistance": "2 miles",
+            "hDifficulty": 2,
             "lat": 52.415524,
             "lng": -4.063066
-        },
-        {
-            "title": "Bangor University",
-            "website": "www.bangor.ac.uk",
-            "phone": "+44 (0)1248 351 151",
-            "lat": 53.229520,
-            "lng": -4.129987
-        },
-        {
-            "title": "Cardiff Metropolitan University",
-            "website": "www.cardiffmet.ac.uk",
-            "phone": "+44 (0)2920 416 138",
-            "lat": 51.482708,
-            "lng": -3.165881
         }
         ]
     };
-    $.each(json1.universities, function(key, data) {
+    $.each(json1.waterfalls, function(key, data) {
 
         var latLng = new google.maps.LatLng(data.lat, data.lng);
 
