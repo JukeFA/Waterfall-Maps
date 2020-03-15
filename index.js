@@ -16,19 +16,20 @@ function initMap() {
     map = new google.maps.Map(document.getElementById("map"), mapProp);
 
       //  $.getJSON(json, function(json1) {
-    var json1 = {
-        "waterfalls": [{
-            "title": "falls",
-            "beauty": 5,
-            "photo": 2,
-            "hDistance": "2 miles",
-            "hDifficulty": 2,
-            "lat": 52.415524,
-            "lng": -4.063066
+    var json = (() => {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "./Map-api/map.json",
+            'dataType': "json",
+            'success': function(data) {
+            json = data;
         }
-        ]
-    };
-    $.each(json1.waterfalls, function(key, data) {
+        });
+        return json;
+    })();
+    $.each(json.waterfalls, function(key, data) {
 
         var latLng = new google.maps.LatLng(data.lat, data.lng);
 
@@ -39,7 +40,7 @@ function initMap() {
             title: data.title
         });
         console.log()
-        var details = `${data.title} <br> ${data.website} <br> ${data.phone}`
+        var details = `${data.title} <br> ${data.beauty} <br> ${data.photo}`
 
         bindInfoWindow(marker, map, infowindow, details);
     });
