@@ -1,12 +1,19 @@
 {
-    "waterfalls": [{
-        "title": "falls",
-        "beauty": 5,
-        "photo": 2,
-        "hDistance": "2 miles",
-        "hDifficulty": 2,
-        "lat": 52.415524,
-        "lng": -4.063066
+    "waterfalls": [
+        {
+            "title": "Shacktown Falls",
+            "beauty": 5,
+            "photo": 2,
+            "hDistance": "2 miles",
+            "hDifficulty": 2,
+            "canopy": "open",
+            "elevation": 760,
+            "pageNumber": 16,
+            "lat": 52.415524,
+            "lng": -4.063066
+        },
+        {
+            
         }
     ]
 }
