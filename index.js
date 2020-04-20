@@ -1,8 +1,6 @@
 // Key = AIzaSyDJsw56Pe-TX7YOw9l2XQlREtw6zKqeeA0
 
 var map;
-var icon = "http://path/to/icon.png";
-var json = "http://path/to/universities.json";
 var infowindow = new google.maps.InfoWindow();
 
 function initMap() {
@@ -56,8 +54,6 @@ function bindInfoWindow(marker, map, infowindow, strDescription) {
 }
 
 google.maps.event.addDomListener(window, 'load', initMap);
-
-//TODO 1. Shrink Map size
 
 //TODO 2. Add sorting options for Photo Rating, Beauty Rating, Elevation, Canopy, Hike Difficulty, and Hike Distance
 
