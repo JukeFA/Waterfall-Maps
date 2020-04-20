@@ -1,0 +1,52 @@
+{
+  "waterfalls":[
+    {
+      "title": "Shacktown Falls",
+      "beauty": 5,
+      "photo": 2,
+      "hDistance": "2 miles",
+      "hDifficulty": 2,
+      "canopy": "open",
+      "elevation": "760 feet",
+      "pageNumber": 16,
+      "lat": 36.12481,
+      "lng": -80.59242
+    },
+    {
+      "title": "Cape Fear River Basin",
+      "beauty": 7,
+      "photo": 9,
+      "hDistance": "2.5 miles",
+      "hDifficulty": 5,
+      "canopy": "open",
+      "elevation": "125 feet",
+      "pageNumber": 19,
+      "lat": 35.46399,
+      "lng": -78.91431
+    },
+    {
+      "title": "Jumping Fish Falls",
+      "beauty": 4,
+      "photo": 6,
+      "hDistance": "0.6 miles",
+      "hDifficulty": 5,
+      "canopy": "partial",
+      "elevation": "135 feet",
+      "pageNumber": 20,
+      "lat": 35.48344,
+      "lng": -78.90395
+    },
+    {
+      "title": "Clark Park Falls",
+      "beauty": 4,
+      "photo": 1,
+      "hDistance": "0.1 miles",
+      "hDifficulty": 1,
+      "canopy": "partial",
+      "elevation": "90 feet",
+      "pageNumber": 21,
+      "lat": 35.08802,
+      "lng": -78.87083
+    }
+  ]
+}

@@ -8,7 +8,7 @@ var infowindow = new google.maps.InfoWindow();
 function initMap() {
 
     var mapProp = {
-        center: new google.maps.LatLng(52.4550, -3.3833), //LLANDRINDOD WELLS
+        center: new google.maps.LatLng(35.591040, -81.797546), // North Carolina
         zoom: 7,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -21,7 +21,7 @@ function initMap() {
         $.ajax({
             'async': false,
             'global': false,
-            'url': "./Map-api/map.json",
+            'url': "./Map-api/Waterfall.json", //Json file location
             'dataType': "json",
             'success': function(data) {
             json = data;
@@ -31,26 +31,36 @@ function initMap() {
     })();
     $.each(json.waterfalls, function(key, data) {
 
-        var latLng = new google.maps.LatLng(data.lat, data.lng);
+        var latLng = new google.maps.LatLng(data.lat, data.lng); // Combine lat and lng for use
 
+        // Marker showing 
         var marker = new google.maps.Marker({
             position: latLng,
             map: map,
           // icon: icon,
             title: data.title
         });
-        console.log()
+        // When Marker clicked
+        //TODO (later) Make pretty
         var details = `${data.title} <br> ${data.beauty} <br> ${data.photo}`
 
         bindInfoWindow(marker, map, infowindow, details);
     });
 }
 
-    function bindInfoWindow(marker, map, infowindow, strDescription) {
-        google.maps.event.addListener(marker, 'click', function() {
-            infowindow.setContent(strDescription);
-            infowindow.open(map, marker);
-        });
-    }
+function bindInfoWindow(marker, map, infowindow, strDescription) {
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(strDescription);
+        infowindow.open(map, marker);
+    });
+}
 
-    google.maps.event.addDomListener(window, 'load', initMap);
+google.maps.event.addDomListener(window, 'load', initMap);
+
+//TODO 1. Shrink Map size
+
+//TODO 2. Add sorting options for Photo Rating, Beauty Rating, Elevation, Canopy, Hike Difficulty, and Hike Distance
+
+//TODO 3. Make them Independent and yet interconnected
+
+//TODO 4. Make the Waterfall Names Searchable 
