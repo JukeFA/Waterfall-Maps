@@ -1,7 +1,21 @@
 // Key = AIzaSyDJsw56Pe-TX7YOw9l2XQlREtw6zKqeeA0
 
-var map;
-var infowindow = new google.maps.InfoWindow();
+let map;
+const infowindow = new google.maps.InfoWindow();
+
+const json = (() => {
+    var json = null;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': "./Map-api/Waterfall.json", //Json file location
+        'dataType': "json",
+        'success': function(data) {
+        json = data;
+    }
+    });
+    return json;
+})();
 
 function initMap() {
 
@@ -14,19 +28,10 @@ function initMap() {
     map = new google.maps.Map(document.getElementById("map"), mapProp);
 
       //  $.getJSON(json, function(json1) {
-    var json = (() => {
-        var json = null;
-        $.ajax({
-            'async': false,
-            'global': false,
-            'url': "./Map-api/Waterfall.json", //Json file location
-            'dataType': "json",
-            'success': function(data) {
-            json = data;
-        }
-        });
-        return json;
-    })();
+
+
+
+
     $.each(json.waterfalls, function(key, data) {
 
         var latLng = new google.maps.LatLng(data.lat, data.lng); // Combine lat and lng for use
