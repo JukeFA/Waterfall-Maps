@@ -62,6 +62,21 @@ google.maps.event.addDomListener(window, 'load', initMap);
 
 //TODO 2. Add sorting options for Photo Rating, Beauty Rating, Elevation, Canopy, Hike Difficulty, and Hike Distance
 
+
+const beautyRating = array => array.filter(location => location.beauty >= 5) //* Filter for Beauty Rating
+
+const photoRating = array => array.filter(location => location.photo >= 5) //* Filter for Photo Rating
+
+const hikeDifficulty = array => array.filter(location => location.hDifficulty >= 5) //* Filter for Hike Difficulty
+
+const hikeDistance = array => array.filter(location => location.hDistance >= '2 Miles') //* Filter for Hike Distance
+
+const Canopy = array => array.filter(location => location.canopy = 'open') //* Filter for Canopy
+
+const Elevation = array => array.filter(location => location.elevation = 200) //* Filter for Elevation
+
+
+
 //TODO 3. Make them Independent and yet interconnected
 
 //TODO 4. Make the Waterfall Names Searchable 
