@@ -32,7 +32,7 @@ function initMap() {
 
 
 
-    $.each(json.waterfalls, function(key, data) {
+    $.each(beautyRating(json.waterfalls), function(key, data) {
 
         var latLng = new google.maps.LatLng(data.lat, data.lng); // Combine lat and lng for use
 
@@ -74,6 +74,7 @@ const hikeDistance = array => array.filter(location => location.hDistance >= '2 
 const Canopy = array => array.filter(location => location.canopy = 'open') //* Filter for Canopy
 
 const Elevation = array => array.filter(location => location.elevation = 200) //* Filter for Elevation
+
 
 
 
