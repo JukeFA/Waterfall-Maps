@@ -17,6 +17,8 @@ const json = (() => {
     return json;
 })();
 
+let waterfall = json.waterfalls
+
 function initMap() {
 
     var mapProp = {
@@ -30,7 +32,7 @@ function initMap() {
       //  $.getJSON(json, function(json1) {
 
 
-    $.each(json.waterfalls, function(key, data) {
+    $.each(waterfall, function(key, data) {
 
         var latLng = new google.maps.LatLng(data.lat, data.lng); // Combine lat and lng for use
 
@@ -65,11 +67,12 @@ window.onload=function(){
 
         const beautyRating = array => array.filter(location => location.beauty >= testFilter)
         event.preventDefault()
-        console.log(beautyRating(json.waterfalls))
+        waterfall = beautyRating(json.waterfalls)
+        console.log(waterfall)
+        initMap()
     }
-    
     const form = document.getElementById('form')
-    form.addEventListener('submit', logSubmit);
+    form.addEventListener('submit', logSubmit, initMap);
 }
 
 
