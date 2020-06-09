@@ -21,7 +21,7 @@ let waterfall = json.waterfalls
 let bRating = []
 let pRating = []
 let hDiff = []
-// let bRating = []
+let elevation = []
 
 function initMap() {
 
@@ -71,30 +71,39 @@ window.onload=function(){
         let bR = document.getElementById("beautyRating_input").value
         let pR = document.getElementById("photoRating_input").value
         let hD = document.getElementById("hikeDifficulty_input").value
-
-        const beautyRating = array => array.filter(location => location.beauty >= bR)
+        let elv = document.getElementById("elevation_input").value
+        
+        const beautyRating = array => array.filter(location => location.beauty >= bR) //* Filter for Beauty Rating
         bRating = beautyRating(json.waterfalls)
-        console.log(bRating)
+        console.log(bRating) //! temp
 
-        const photoRating = array => array.filter(location => location.photo >= pR)
+        const photoRating = array => array.filter(location => location.photo >= pR) //* Filter for Photo Rating
         pRating = photoRating(json.waterfalls)
-        console.log(pRating)
+        console.log(pRating) //! temp
 
-        const hikeDifficulty = array => array.filter(location => location.hDifficulty >= hD)
+        const hikeDifficulty = array => array.filter(location => location.hDifficulty <= hD) //* Filter for Hike Difficulty
         hDiff = hikeDifficulty(json.waterfalls)
-        console.log(hDiff)
+        console.log(hDiff) //! temp
+
+        const Elevation = array => array.filter(location => location.elevation <= elv) //* Filter for Elevation
+        elevation = Elevation(json.waterfalls)
+        console.log(elevation) //! temp
+
+
 
         for (var i = 0; i < bRating.length; i++) {
             for (var j = 0; j < pRating.length; j++) {
                 for (var n = 0; n < hDiff.length; ++n){
-                    if (bRating[i] == pRating[j] && bRating[i] == hDiff[n]) {
-                        waterfall.push(bRating[i])
+                    for (var m = 0; m < elevation.length; ++m){
+                        if (bRating[i] == pRating[j] && bRating[i] == hDiff[n] && bRating[i] == elevation[m]) {
+                            waterfall.push(bRating[i])
+                        }
                     }
                 }
             }
         }
         
-        console.log(waterfall)
+        console.log(waterfall) //! temp
         event.preventDefault()
         
         function reloadMap() {
@@ -131,9 +140,9 @@ window.onload=function(){
         reloadMap()
     }
     const form = document.getElementById('form')
-    form.addEventListener('submit', logSubmit, initMap);
+    form.addEventListener('submit', logSubmit);
 
-    console.log(waterfall)
+    console.log(waterfall) //! temp
 }
 
 
@@ -144,11 +153,11 @@ window.onload=function(){
 
 // const hikeDifficulty = array => array.filter(location => location.hDifficulty >= 5) //* Filter for Hike Difficulty
 
-// const hikeDistance = array => array.filter(location => location.hDistance >= '2 Miles') //* Filter for Hike Distance
+//const hikeDistance = array => array.filter(location => location.hDistance >= '2 Miles') //* Filter for Hike Distance
 
-// const Canopy = array => array.filter(location => location.canopy = 'open') //* Filter for Canopy
+//const Canopy = array => array.filter(location => location.canopy = 'open') //* Filter for Canopy
 
-// const Elevation = array => array.filter(location => location.elevation = 200) //* Filter for Elevation
+//const Elevation = array => array.filter(location => location.elevation = 200) //* Filter for Elevation
 
 
 //TODO 3. Make them Independent and yet interconnected
