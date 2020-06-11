@@ -64,7 +64,7 @@ function bindInfoWindow(marker, map, infowindow, strDescription) {
 
 google.maps.event.addDomListener(window, 'load', initMap);
 
-//TODO 2. Add sorting options for Photo Rating, Beauty Rating, Elevation, Canopy, Hike Difficulty, and Hike Distance
+//TODO 2. Add sorting options for Hike Distance
 window.onload=function(){
     function logSubmit(event) {
         let bR = document.getElementById("beautyRating_input").value
@@ -73,33 +73,6 @@ window.onload=function(){
         let elv = document.getElementById("elevation_input").value
         let can = document.getElementById("canopy_input").value
         
-        // const beautyRating = array => array.filter(location => location.beauty >= bR) //* Filter for Beauty Rating
-        // bRating = beautyRating(json.waterfalls)
-        // console.log(bRating) //! temp
-
-        // const photoRating = array => array.filter(location => location.photo >= pR) //* Filter for Photo Rating
-        // pRating = photoRating(json.waterfalls)
-        // console.log(pRating) //! temp
-
-        // const hikeDifficulty = array => array.filter(location => location.hDifficulty <= hD) //* Filter for Hike Difficulty
-        // hDiff = hikeDifficulty(json.waterfalls)
-        // console.log(hDiff) //! temp
-
-        // const Elevation = array => array.filter(location => location.elevation <= elv) //* Filter for Elevation
-        // elevation = Elevation(json.waterfalls)
-        // console.log(elevation) //! temp
-
-
-        // console.log(can)
-        // const Canopy = array => array.filter(location => location.canopy = can)
-
-        // let canopy = [];
-        // if (can == 'all') {
-        //     canopy = json.waterfalls
-        // } else {
-        //     canopy = Canopy(json.waterfalls)
-        //     console.log(canopy)
-        // }
         const filteredList = array => array
             .filter(location => location.beauty >= bR)
             .filter(location => location.photo >= pR)
@@ -164,17 +137,6 @@ window.onload=function(){
     form.addEventListener('submit', logSubmit);
 }
 
-
-
-// const beautyRating = array => array.filter(location => location.beauty >= 5) //* Filter for Beauty Rating
-
-// const photoRating = array => array.filter(location => location.photo >= pR) //* Filter for Photo Rating
-
-// const hikeDifficulty = array => array.filter(location => location.hDifficulty >= 5) //* Filter for Hike Difficulty
-
 const hikeDistance = array => array.filter(location => location.hDistance >= 2 + 'Miles') //* Filter for Hike Distance
 
-// const Canopy = array => array.filter(location => location.canopy = 'open') //* Filter for Canopy
-
-//const Elevation = array => array.filter(location => location.elevation = 200) //* Filter for Elevation
 //TODO 4. Make the Waterfall Names Searchable 
