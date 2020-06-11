@@ -17,11 +17,7 @@ const json = (() => {
     return json;
 })();
 
-// let bRating = []
-// let pRating = []
-// let hDiff = []
-// let elevation = []
-// let canopy = []
+var waterfalls = json.waterfalls
 
 function initMap() {
 
@@ -72,6 +68,7 @@ window.onload=function(){
         let hD = document.getElementById("hikeDifficulty_input").value
         let elv = document.getElementById("elevation_input").value
         let can = document.getElementById("canopy_input").value
+        let hDis = document.getElementById("hikeDistance_input").value
         
         const filteredList = array => array
             .filter(location => location.beauty >= bR)
@@ -94,12 +91,29 @@ window.onload=function(){
         } else {
             finalList = filteredListCan(json.waterfalls)
         }
+        
+        if (hDis == 1) { // if less than 0.1 miles
+            finalList = finalList.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.1)
+        } else if (hDis == 2) { // if less than 0.25 miles
+            finalList = finalList.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.25)
+        } else if (hDis == 3) { // if less than 0.5 miles
+            finalList = finalList.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.5)
+        } else if (hDis == 4) { // if less than 0.75 miles
+            finalList = finalList.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.75)
+        } else if (hDis == 5) {
+            finalList = finalList.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 1)
+        } else if (hDis == 6) {
+            finalList = finalList.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 2)
+        } else if (hDis == 10) {
+            finalList = finalList.filter(location => location.hDistance.split(' ')[0] > 2 && location.hDistance.split(' ')[1] != "yards" && location.hDistance.split(' ')[1] != "feet")
+        }else {
+            finalList = finalList
+        }
+
         console.log(finalList)
 
-
-
         event.preventDefault()
-        
+
         function reloadMap() {
             var mapProp = {
                 center: new google.maps.LatLng(35.591040, -81.797546), // North Carolina
@@ -137,6 +151,14 @@ window.onload=function(){
     form.addEventListener('submit', logSubmit);
 }
 
-const hikeDistance = array => array.filter(location => location.hDistance >= 2 + 'Miles') //* Filter for Hike Distance
+
+
+
+//* Filter for Hike Distance
+
+// const newDistances = result.map(el => {
+//     console.log(el.split(' '))
+//     if
+// })
 
 //TODO 4. Make the Waterfall Names Searchable 
