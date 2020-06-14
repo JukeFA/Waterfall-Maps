@@ -17,6 +17,7 @@ const json = (() => {
     return json;
 })();
 
+
 var waterfalls = json.waterfalls
 
 function initMap() {
@@ -45,7 +46,8 @@ function initMap() {
         });
         // When Marker clicked
         //TODO (later) Make pretty
-        var details = `${data.title} <br> ${data.beauty} <br> ${data.photo}`
+        var details = `<strong>${data.title}</strong> 
+                        <br> Beauty Rating: <strong>${data.beauty}</strong> Photo Rating: <strong>${data.photo}</strong>`
 
         bindInfoWindow(marker, map, infowindow, details);
     });
@@ -69,7 +71,10 @@ window.onload=function(){
         let elv = document.getElementById("elevation_input").value
         let can = document.getElementById("canopy_input").value
         let hDis = document.getElementById("hikeDistance_input").value
-        
+        let comp = document.getElementById("compass_input").value
+
+        console.log(bR, pR, hD, elv, can, hDis, comp)
+
         const filteredList = array => array
             .filter(location => location.beauty >= bR)
             .filter(location => location.photo >= pR)
@@ -84,6 +89,15 @@ window.onload=function(){
             .filter(location => location.elevation <= elv)
             .filter(location => location.canopy == can)
 
+            const lessThanTenth = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.1)
+            const lessThanQuarter = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.25)
+            const lessThanHalf = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.5)
+            const lessThanThreeQuarter = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.75)
+            const lessThanOne = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 1)
+            const lessThanTwo = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 2)
+            const moreThanTwo = array => array.filter(location => location.hDistance.split(' ')[0] > 2.0 && location.hDistance.toLowerCase().split(' ')[1] != "yards" && location.hDistance.toLowerCase().split(' ')[1] != "feet")
+            
+
         let finalList = []
 
         if (can == 'all') {
@@ -91,23 +105,64 @@ window.onload=function(){
         } else {
             finalList = filteredListCan(json.waterfalls)
         }
-        
-        if (hDis == 1) { // if less than 0.1 miles
-            finalList = finalList.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.1)
-        } else if (hDis == 2) { // if less than 0.25 miles
-            finalList = finalList.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.25)
-        } else if (hDis == 3) { // if less than 0.5 miles
-            finalList = finalList.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.5)
-        } else if (hDis == 4) { // if less than 0.75 miles
-            finalList = finalList.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.75)
-        } else if (hDis == 5) {
-            finalList = finalList.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 1)
-        } else if (hDis == 6) {
-            finalList = finalList.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 2)
-        } else if (hDis == 10) {
-            finalList = finalList.filter(location => location.hDistance.split(' ')[0] > 2 && location.hDistance.split(' ')[1] != "yards" && location.hDistance.split(' ')[1] != "feet")
-        }else {
-            finalList = finalList
+
+        //Hike Distance
+        switch (hDis) {
+            case "1":
+                finalList = lessThanTenth(finalList)
+                break
+            case "2":
+                finalList = lessThanQuarter(finalList)
+                break
+            case "3":
+                finalList = lessThanHalf(finalList)
+                break
+            case "4":
+                finalList = lessThanThreeQuarter(finalList)
+                break
+            case "5":
+                finalList = lessThanOne(finalList)
+                break
+            case "6":
+                finalList = lessThanTwo(finalList)
+                break
+            case "10":
+                finalList = moreThanTwo(finalList)
+                break
+            default:
+                finalList = finalList
+        };
+
+        console.log(finalList)
+
+        // Compass Heading 
+        switch (comp) {
+            case 'N':
+                finalList = N(finalList)
+                break
+            case 'NE':
+                finalList = NE(finalList)
+                break
+            case 'E':
+                finalList = E(finalList)
+                break
+            case 'SE':
+                finalList = SE(finalList)
+                break
+            case 'S':
+                finalList = S(finalList)
+                break
+            case 'SW':
+                finalList = SW(finalList)
+                break
+            case 'W':
+                finalList = W(finalList)
+                break
+            case 'NW':
+                finalList = NW(finalList)
+                break
+            default:
+                finalList = finalList
         }
 
         console.log(finalList)
@@ -152,13 +207,26 @@ window.onload=function(){
 }
 
 
+//* For Compass Heading
+const N = array => array.filter(location => location.compass >=338 && location.compass <=22)
+const NE = array => array.filter(location => location.compass >=23 && location.compass <=67)
+const E = array => array.filter(location => location.compass >=68 && location.compass <=112)
+const SE = array => array.filter(location => location.compass >=113 && location.compass <=157)
+const S = array => array.filter(location => location.compass >=158 && location.compass <=202)
+const SW = array => array.filter(location => location.compass >=203 && location.compass <=247)
+const W = array => array.filter(location => location.compass >=248 && location.compass <=292)
+const NW = array => array.filter(location => location.compass >=293 && location.compass <=337)
+
+//* For Hike Distance
+// const lessThanTenth = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.1)
+// const lessThanQuarter = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.25)
+// const lessThanHalf = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.5)
+// const lessThanThreeQuarter = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.75)
+// const lessThanOne = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 1)
+// const lessThanTwo = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 2)
+// const moreThanTwo = array => array.filter(location => location.hDistance.split(' ')[0] > 2.0 && location.hDistance.toLowerCase().split(' ')[1] != "yards" && location.hDistance.toLowerCase().split(' ')[1] != "feet")
 
 
-//* Filter for Hike Distance
 
-// const newDistances = result.map(el => {
-//     console.log(el.split(' '))
-//     if
-// })
 
 //TODO 4. Make the Waterfall Names Searchable 
