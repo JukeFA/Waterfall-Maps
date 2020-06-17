@@ -48,7 +48,10 @@ function initMap() {
         //TODO (later) Make pretty
         var details = `<strong><h3>${data.title}</h3></strong> 
                         <br> Beauty Rating: <strong>${data.beauty}</strong> Photo Rating: <strong>${data.photo}</strong>
-                        <br> 
+                        <br> Hike Difficulty: <strong>${data.hDifficulty}</strong> Hike Distance: <strong>${data.hDistance}</strong>
+                        <br> Compass Heading: <strong>${data.compass}</strong> Elevation: <strong>${data.elevation}</strong>
+                        <br> Page Number: <strong>page ${data.pageNumber}</strong> Canopy: <strong>${data.canopy}</strong>
+                        
                         `
 
         bindInfoWindow(marker, map, infowindow, details);
