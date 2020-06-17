@@ -4,26 +4,10 @@
         <title>Simple Map</title>
         <meta name="viewport" content="initial-scale=1.0">
         <meta charset="utf-8">
-        <style>
-                /* Always set the map height explicitly to define the size of the div
-                * element that contains the map. */
-            #map {
-                width: 50%;
-                height: 50%;
-                position: relative;
-                left: 400px;
-                top: 450px;
-            }
-                /* Optional: Makes the sample page fill the window. */
-            html, body {
-                height: 100%;
-                margin: 0;
-                padding: 0;
-            }
-        </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJsw56Pe-TX7YOw9l2XQlREtw6zKqeeA0"></script>
         <script src="index.js"></script>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <form id="form">
@@ -50,7 +34,7 @@
                 <option value="6">2 mile</option>
                 <option value="10">Larger than 2 Miles</option>
             </select>
-            <label>Comass Heading</label>
+            <label>Compass Heading</label>
             <select id="compass_input" name="Compass">
                 <option value="All">All</option>
                 <option value="N">North</option>

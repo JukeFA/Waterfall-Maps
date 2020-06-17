@@ -33,7 +33,7 @@ function initMap() {
       //  $.getJSON(json, function(json1) {
 
 
-    $.each(json.waterfalls, function(key, data) {
+    $.each(waterfalls, function(key, data) {
 
         var latLng = new google.maps.LatLng(data.lat, data.lng); // Combine lat and lng for use
 
@@ -46,8 +46,10 @@ function initMap() {
         });
         // When Marker clicked
         //TODO (later) Make pretty
-        var details = `<strong>${data.title}</strong> 
-                        <br> Beauty Rating: <strong>${data.beauty}</strong> Photo Rating: <strong>${data.photo}</strong>`
+        var details = `<strong><h3>${data.title}</h3></strong> 
+                        <br> Beauty Rating: <strong>${data.beauty}</strong> Photo Rating: <strong>${data.photo}</strong>
+                        <br> 
+                        `
 
         bindInfoWindow(marker, map, infowindow, details);
     });
@@ -62,7 +64,6 @@ function bindInfoWindow(marker, map, infowindow, strDescription) {
 
 google.maps.event.addDomListener(window, 'load', initMap);
 
-//TODO 2. Add sorting options for Hike Distance
 window.onload=function(){
     function logSubmit(event) {
         let bR = document.getElementById("beautyRating_input").value
@@ -72,8 +73,6 @@ window.onload=function(){
         let can = document.getElementById("canopy_input").value
         let hDis = document.getElementById("hikeDistance_input").value
         let comp = document.getElementById("compass_input").value
-
-        console.log(bR, pR, hD, elv, can, hDis, comp)
 
         const filteredList = array => array
             .filter(location => location.beauty >= bR)
@@ -88,15 +87,6 @@ window.onload=function(){
             .filter(location => location.hDifficulty <= hD)
             .filter(location => location.elevation <= elv)
             .filter(location => location.canopy == can)
-
-            const lessThanTenth = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.1)
-            const lessThanQuarter = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.25)
-            const lessThanHalf = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.5)
-            const lessThanThreeQuarter = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.75)
-            const lessThanOne = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 1)
-            const lessThanTwo = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 2)
-            const moreThanTwo = array => array.filter(location => location.hDistance.split(' ')[0] > 2.0 && location.hDistance.toLowerCase().split(' ')[1] != "yards" && location.hDistance.toLowerCase().split(' ')[1] != "feet")
-            
 
         let finalList = []
 
@@ -133,8 +123,6 @@ window.onload=function(){
                 finalList = finalList
         };
 
-        console.log(finalList)
-
         // Compass Heading 
         switch (comp) {
             case 'N':
@@ -169,38 +157,40 @@ window.onload=function(){
 
         event.preventDefault()
 
-        function reloadMap() {
-            var mapProp = {
-                center: new google.maps.LatLng(35.591040, -81.797546), // North Carolina
-                zoom: 7,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
+        // function reloadMap() {
+        //     var mapProp = {
+        //         center: new google.maps.LatLng(35.591040, -81.797546), // North Carolina
+        //         zoom: 7,
+        //         mapTypeId: google.maps.MapTypeId.ROADMAP
+        //     };
         
-            map = new google.maps.Map(document.getElementById("map"), mapProp);
+        //     map = new google.maps.Map(document.getElementById("map"), mapProp);
         
-              //  $.getJSON(json, function(json1) {
+        //       //  $.getJSON(json, function(json1) {
         
         
-            $.each(filteredList(finalList), function(key, data) {
+        //     $.each(filteredList(finalList), function(key, data) {
         
-                var latLng = new google.maps.LatLng(data.lat, data.lng); // Combine lat and lng for use
+        //         var latLng = new google.maps.LatLng(data.lat, data.lng); // Combine lat and lng for use
         
-                // Marker showing 
-                var marker = new google.maps.Marker({
-                    position: latLng,
-                    map: map,
-                  // icon: icon,
-                    title: data.title
-                });
-                // When Marker clicked
-                //TODO (later) Make pretty
-                var details = `${data.title} <br> ${data.beauty} <br> ${data.photo}`
+        //         // Marker showing 
+        //         var marker = new google.maps.Marker({
+        //             position: latLng,
+        //             map: map,
+        //           // icon: icon,
+        //             title: data.title
+        //         });
+        //         // When Marker clicked
+        //         //TODO (later) Make pretty
+        //         var details = ``
         
-                bindInfoWindow(marker, map, infowindow, details);
-            })
-        };
+        //         bindInfoWindow(marker, map, infowindow, details);
+        //     })
+        // };
 
-        reloadMap()
+        waterfalls = finalList
+        initMap()
+
     }
     const form = document.getElementById('form')
     form.addEventListener('submit', logSubmit);
@@ -218,13 +208,13 @@ const W = array => array.filter(location => location.compass >=248 && location.c
 const NW = array => array.filter(location => location.compass >=293 && location.compass <=337)
 
 //* For Hike Distance
-// const lessThanTenth = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.1)
-// const lessThanQuarter = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.25)
-// const lessThanHalf = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.5)
-// const lessThanThreeQuarter = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.75)
-// const lessThanOne = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 1)
-// const lessThanTwo = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 2)
-// const moreThanTwo = array => array.filter(location => location.hDistance.split(' ')[0] > 2.0 && location.hDistance.toLowerCase().split(' ')[1] != "yards" && location.hDistance.toLowerCase().split(' ')[1] != "feet")
+const lessThanTenth = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.1)
+const lessThanQuarter = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.25)
+const lessThanHalf = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.5)
+const lessThanThreeQuarter = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.75)
+const lessThanOne = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 1)
+const lessThanTwo = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 2)
+const moreThanTwo = array => array.filter(location => location.hDistance.split(' ')[0] > 2.0 && location.hDistance.toLowerCase().split(' ')[1] != "yards" && location.hDistance.toLowerCase().split(' ')[1] != "feet")
 
 
 
