@@ -51,7 +51,6 @@ function initMap() {
                         <br> Hike Difficulty: <strong>${data.hDifficulty}</strong> Hike Distance: <strong>${data.hDistance}</strong>
                         <br> Compass Heading: <strong>${data.compass}</strong> Elevation: <strong>${data.elevation}</strong>
                         <br> Page Number: <strong>page ${data.pageNumber}</strong> Canopy: <strong>${data.canopy}</strong>
-                        
                         `
 
         bindInfoWindow(marker, map, infowindow, details);
@@ -201,7 +200,7 @@ window.onload=function(){
 
 
 //* For Compass Heading
-const N = array => array.filter(location => location.compass >=338 && location.compass <=22)
+const N = array => array.filter(location => location.compass >=338 || location.compass <=22)
 const NE = array => array.filter(location => location.compass >=23 && location.compass <=67)
 const E = array => array.filter(location => location.compass >=68 && location.compass <=112)
 const SE = array => array.filter(location => location.compass >=113 && location.compass <=157)
