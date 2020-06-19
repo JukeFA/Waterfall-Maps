@@ -45,7 +45,7 @@ function initMap() {
             title: data.title
         });
         // When Marker clicked
-        //TODO (later) Make pretty
+        //TODO (later) Make More pretty
         var details = `<strong><h3>${data.title}</h3></strong> 
                         <br> Beauty Rating: <strong>${data.beauty}</strong> Photo Rating: <strong>${data.photo}</strong>
                         <br> Hike Difficulty: <strong>${data.hDifficulty}</strong> Hike Distance: <strong>${data.hDistance}</strong>
@@ -155,40 +155,7 @@ window.onload=function(){
                 finalList = finalList
         }
 
-        console.log(finalList)
-
         event.preventDefault()
-
-        // function reloadMap() {
-        //     var mapProp = {
-        //         center: new google.maps.LatLng(35.591040, -81.797546), // North Carolina
-        //         zoom: 7,
-        //         mapTypeId: google.maps.MapTypeId.ROADMAP
-        //     };
-        
-        //     map = new google.maps.Map(document.getElementById("map"), mapProp);
-        
-        //       //  $.getJSON(json, function(json1) {
-        
-        
-        //     $.each(filteredList(finalList), function(key, data) {
-        
-        //         var latLng = new google.maps.LatLng(data.lat, data.lng); // Combine lat and lng for use
-        
-        //         // Marker showing 
-        //         var marker = new google.maps.Marker({
-        //             position: latLng,
-        //             map: map,
-        //           // icon: icon,
-        //             title: data.title
-        //         });
-        //         // When Marker clicked
-        //         //TODO (later) Make pretty
-        //         var details = ``
-        
-        //         bindInfoWindow(marker, map, infowindow, details);
-        //     })
-        // };
 
         waterfalls = finalList
         initMap()
