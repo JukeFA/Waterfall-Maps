@@ -1,7 +1,9 @@
 /* Always set the map height explicitly to define the size of the div
 element that contains the map. */
 
-
+*{
+    font-size: 16pt;
+}
 
 #map {
     width: 100%;
@@ -18,5 +20,28 @@ html, body {
 }
 
 h3 {
+    
     margin: 0px;
+}
+
+.marker {
+    font-size: 12pt;
+    margin: 0px;
+}
+
+.number {
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.button {
+    font: bold 11px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
 }
