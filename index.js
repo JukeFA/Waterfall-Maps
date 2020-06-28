@@ -75,6 +75,15 @@ window.onload=function(){
         let hDis = document.getElementById("hikeDistance_input").value
         let comp = document.getElementById("compass_input").value
 
+        if (elv == 0) {
+            elv = 10000
+        }
+        if (hD == 0) {
+            hD = 10
+        }
+
+        console.log(bR, pR, hD, elv, can, hDis, comp)
+
         const filteredList = array => array
             .filter(location => location.beauty >= bR)
             .filter(location => location.photo >= pR)
