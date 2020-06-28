@@ -1,5 +1,3 @@
-// Key = AIzaSyDJsw56Pe-TX7YOw9l2XQlREtw6zKqeeA0
-
 let map;
 const infowindow = new google.maps.InfoWindow();
 
