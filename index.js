@@ -23,7 +23,8 @@ function initMap() {
     var mapProp = {
         center: new google.maps.LatLng(35.591040, -81.797546), // North Carolina
         zoom: 7,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        gestureHandling: 'greedy'
     };
 
     map = new google.maps.Map(document.getElementById("map"), mapProp);
