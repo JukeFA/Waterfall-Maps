@@ -28,7 +28,7 @@ function initMap() {
     };
 
     infoWindow = new google.maps.InfoWindow();
-    
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             position => {
@@ -36,11 +36,14 @@ function initMap() {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
-                console.log(pos)
                 infoWindow.setPosition(pos);
-                infoWindow.setContent("Location found.");
-                infoWindow.open(map);
                 map.setCenter(pos);
+                var marker = new google.maps.Marker({
+                    position: pos,
+                    map: map,
+                    icon: '/pngfuel.com.png',
+                    title: "Current Location"
+                });
             },
             () => {
             handleLocationError(true, infoWindow, map.getCenter());
