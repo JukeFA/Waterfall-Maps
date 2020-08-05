@@ -36,6 +36,7 @@ function initMap() {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                 };
+                console.log(pos)
                 infoWindow.setPosition(pos);
                 map.setCenter(pos);
                 var marker = new google.maps.Marker({
