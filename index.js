@@ -42,7 +42,7 @@ function initMap() {
                 var marker = new google.maps.Marker({
                     position: pos,
                     map: map,
-                    icon: '../pngfuel.com.png',
+                    icon: 'pngfuel.com.png',
                     title: "Current Location"
                 });
             },
