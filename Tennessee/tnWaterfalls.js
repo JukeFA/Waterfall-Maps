@@ -6,7 +6,7 @@ const json = (() => {
     $.ajax({
         'async': false,
         'global': false,
-        'url': "./Map-api/North Carolina Waterfalls.json", //Json file location
+        'url': "./Tennessee Waterfalls.json", //Json file location
         'dataType': "json",
         'success': function(data) {
         json = data;
@@ -27,7 +27,7 @@ function initMap() {
         gestureHandling: 'greedy'
     };
 
-    infoWindow = new google.maps.InfoWindow();
+    let infoWindow = new google.maps.InfoWindow();
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(

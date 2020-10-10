@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>North Carolina Waterfalls</title>
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJsw56Pe-TX7YOw9l2XQlREtw6zKqeeA0"></script>
+        <script src="./ncWaterfalls.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="item">
+                <form id="form">
+                    <label>Beauty Rating: <input type="number" id="beautyRating_input" min="0" max="10" ></label> 
+                    <br>
+                    <label>Photo Rating: <input type="number" id="photoRating_input" min="0" max="10" ></label>
+                    <br>
+                    <label>Hike Difficulty: <input type="number" id="hikeDifficulty_input" min="0" max="10" ></label>
+                    <br>
+                    <label>Elevation: <input type="number" id="elevation_input" min="0" max="10000"></label>
+                    <br>
+                    <label>Canopy: </label>
+                    <select id="canopy_input" name="Canopy">
+                        <option value="all">All</option>
+                        <option value="open">Open</option>
+                        <option value="partial">Partial</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                    <br>
+                    <label>Hike Distance</label>
+                    <select id="hikeDistance_input" name="HikeDistance">
+                        <option value="0">All</option>
+                        <option value="1">0.1 miles</option>
+                        <option value="2">0.25 miles</option>
+                        <option value="3">0.5 miles</option>
+                        <option value="4">0.75 miles</option>
+                        <option value="5">1 mile</option>
+                        <option value="6">2 mile</option>
+                        <option value="10">Larger than 2 Miles</option>
+                    </select>
+                    <br>
+                    <label>Compass Heading</label>
+                    <select id="compass_input" name="Compass">
+                        <option value="All">All</option>
+                        <option value="N">North</option>
+                        <option value="NE">North East</option>
+                        <option value="E">East</option>
+                        <option value="SE">South East</option>
+                        <option value="S">South</option>
+                        <option value="SW">South West</option>
+                        <option value="W">West</option>
+                        <option value="NW">North West</option>
+                    </select>
+                    <br><br>
+                    <button type="submit">Submit form</button>
+                </form>
+            </div>
+            <div class="item" id="map"></div>
+        </div>
+    </body>
+</html>
