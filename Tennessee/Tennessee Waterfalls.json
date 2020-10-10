@@ -1,4 +1,5 @@
-[
+{
+"waterfalls":[
   {
     "title": "Backbone Falls",
     "beauty": 4,
@@ -3654,7 +3655,7 @@
     "photo": 2,
     "compass": "",
     "canopy": "",
-    "lat": 36.62199,
+    "lat": 36.26199,
     "lng": -85.58077,
     "pageNumber": 257,
     "notes": ""
@@ -3774,7 +3775,7 @@
     "photo": 4,
     "compass": "",
     "canopy": "",
-    "lat": 36.94499,
+    "lat": 35.94499,
     "lng": -85.7764,
     "pageNumber": 267,
     "notes": ""
@@ -3789,7 +3790,7 @@
     "photo": 6,
     "compass": "",
     "canopy": "",
-    "lat": 36.94344,
+    "lat": 35.94344,
     "lng": -85.77949,
     "pageNumber": 267,
     "notes": ""
@@ -3804,7 +3805,7 @@
     "photo": 6,
     "compass": "",
     "canopy": "",
-    "lat": 36.80457,
+    "lat": 35.80457,
     "lng": -85.62776,
     "pageNumber": 269,
     "notes": ""
@@ -4470,3 +4471,4 @@
     "notes": ""
   }
 ]
+}
