@@ -1,4 +1,5 @@
-[
+{
+  "waterfalls": [
   {
     "title": "Sandstone Falls",
     "beauty": "",
@@ -950,3 +951,4 @@
     "notes": ""
   }
 ]
+}
