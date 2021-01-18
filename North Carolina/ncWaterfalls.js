@@ -73,7 +73,7 @@ function initMap() {
         });
         // When Marker clicked
         //TODO (later) Make More pretty
-        var details = `<div class="marker" ><strong><h3>${data.title}</h3></strong> 
+        var details = `<div class="marker"><strong><h3>${data.title}</h3></strong> 
                         Beauty Rating: <span class="number">${data.beauty}</span> Photo Rating: <span class="number">${data.photo}</span>
                         <br> Hike Difficulty: <span class="number">${data.hDifficulty}</span> Hike Distance: <span class="number">${data.hDistance}</span>
                         <br> Compass Heading: <span class="number">${data.compass}</span> Elevation: <span class="number">${data.elevation}</span>
