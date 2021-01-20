@@ -37,19 +37,19 @@ h3 {
 }
 
 .marker {
-    /* font-size: 12pt; */
+    font-size: 1.2vh;
     margin: 0px;
     /* display: grid;
     grid-template-columns: 50% 50%; */
 }
 
 .number {
-    font-size: 12pt;
+    font-size: 1.3vh;
     font-weight: bold;
 }
 
 .button {
-    font: bold 11px Arial;
+    font: bold 1.2vh Arial;
     text-decoration: none;
     background-color: #EEEEEE;
     color: #333333;
