@@ -1,0 +1,22 @@
+@media (prefers-color-scheme: dark) {
+    /* Dark theme styles go here */
+    body{
+        padding: 25px;
+        background-color: black;
+        color: white;
+        font-size: 25px;
+    }
+
+    a{
+        color: grey;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        padding: 25px;
+        background-color: white;
+        color: black;
+        font-size: 25px;
+    }
+}
