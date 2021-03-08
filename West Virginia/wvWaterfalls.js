@@ -96,8 +96,19 @@ let dark =  [
     },
 ]
 
-let light = true;
+let light = [
+    {
+        "featureType": "all",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "on"
+            }
+        ]
+    }
+]
 
+let darkTest = window.matchMedia('(prefers-color-scheme: dark)')
 
 // Dark = '45cf1e57028d5a7c'
 
@@ -110,11 +121,9 @@ function initMap() {
     var mapProp = {
         center: new google.maps.LatLng(35.591040, -81.797546), // North Carolina
         zoom: 7,
-        // mapTypeId: google.maps.MapTypeId.ROADMAP,
         gestureHandling: 'greedy',
-        mapId: '45cf1e57028d5a7c',  //This doesn't seem to be working
-        // styles: //This works but need to find default Json Style code
-    };
+        styles: dark
+    }
 
     let infoWindow = new google.maps.InfoWindow();
 
