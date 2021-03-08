@@ -108,7 +108,7 @@ let light = [
     }
 ]
 
-let darkTest = window.matchMedia('(prefers-color-scheme: dark)')
+let darkTest = window.matchMedia('(prefers-color-scheme: dark)').matches
 
 // Dark = '45cf1e57028d5a7c'
 
@@ -122,7 +122,7 @@ function initMap() {
         center: new google.maps.LatLng(35.591040, -81.797546), // North Carolina
         zoom: 7,
         gestureHandling: 'greedy',
-        styles: dark
+        styles: darkTest ? dark : light 
     }
 
     let infoWindow = new google.maps.InfoWindow();

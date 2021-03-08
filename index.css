@@ -13,6 +13,7 @@
 }
 
 @media (prefers-color-scheme: light) {
+        /* Light theme styles go here */
     body {
         padding: 25px;
         background-color: white;
