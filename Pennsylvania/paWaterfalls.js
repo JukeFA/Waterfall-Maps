@@ -175,9 +175,6 @@ function initMap() {
                         Hike Difficulty: <span class="number">${data.hDifficulty}</span> Hike Distance: <span class="number">${data.hDistance}</span>
                         <br> Page Number: <span class="number">page ${data.pageNumber}</span> Canopy: <span class="number">${data.canopy}</span><div>
                         <a href="https://www.google.com/maps/dir/?api=1&destination=${data.lat},${data.lng}" target="_blank" class="button" style="margin-top:100px">Click Here For Directions</a>
-                        <br>
-                        ${data.note}
-
                         `
 
         bindInfoWindow(marker, map, infowindow, details);
