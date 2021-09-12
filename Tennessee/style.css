@@ -37,10 +37,11 @@ h3 {
 }
 
 .marker {
-    /* font-size: 12pt; */
+    font-size: 12pt;
     margin: 0px;
-    /* display: grid;
-    grid-template-columns: 50% 50%; */
+    line-height: 1.35;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .number {

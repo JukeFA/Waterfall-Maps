@@ -192,6 +192,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 function bindInfoWindow(marker, map, infowindow, strDescription) {
     google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(strDescription);
+        // infowindow.setMaxWidth(400);
         infowindow.open(map, marker);
     });
 }
