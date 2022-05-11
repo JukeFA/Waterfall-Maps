@@ -1,0 +1,19 @@
+{
+  "waterfalls":[
+    {
+      "title": "Stepstone Falls",
+      "beauty": 6,
+      "elevation": "",
+      "hDistance": 0.1,
+      "hDifficulty": 2,
+      "hDiffUpdate": "",
+      "photo": 6,
+      "compass": "",
+      "canopy": "",
+      "lat": 41.61258,
+      "lng": -71.76065,
+      "pageNumber": 39,
+      "notes": ""
+    }
+  ]
+}
