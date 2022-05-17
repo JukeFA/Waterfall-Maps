@@ -203,41 +203,41 @@ window.onload=function(){
         let bR = document.getElementById("beautyRating_input").value
         let pR = document.getElementById("photoRating_input").value
         let hD = document.getElementById("hikeDifficulty_input").value
-        let elv = document.getElementById("elevation_input").value
-        let can = document.getElementById("canopy_input").value
+        // let elv = document.getElementById("elevation_input").value
+        // let can = document.getElementById("canopy_input").value
         let hDis = document.getElementById("hikeDistance_input").value
-        let comp = document.getElementById("compass_input").value
+        // let comp = document.getElementById("compass_input").value
 
-        if (elv == 0) {
-            elv = 10000
-        }
+        // if (elv == 0) {
+        //     elv = 10000
+        // }
         if (hD == 0) {
             hD = 10
         }
 
-        console.log(bR, pR, hD, elv, can, hDis, comp)
+        // console.log(bR, pR, hD, elv, can, hDis, comp)
 
         const filteredList = array => array
             .filter(location => location.beauty >= bR)
             .filter(location => location.photo >= pR)
             .filter(location => location.hDifficulty <= hD)
-            .filter(location => location.elevation <= elv)
+            // .filter(location => location.elevation <= elv)
             // .filter(location => location.canopy = can)
 
-        const filteredListCan = array => array
-            .filter(location => location.beauty >= bR)
-            .filter(location => location.photo >= pR)
-            .filter(location => location.hDifficulty <= hD)
-            .filter(location => location.elevation <= elv)
-            .filter(location => location.canopy == can)
+        // const filteredListCan = array => array
+        //     .filter(location => location.beauty >= bR)
+        //     .filter(location => location.photo >= pR)
+        //     .filter(location => location.hDifficulty <= hD)
+        //     .filter(location => location.elevation <= elv)
+        //     .filter(location => location.canopy == can)
 
         let finalList = []
 
-        if (can == 'all') {
-            finalList = filteredList(json.waterfalls)
-        } else {
-            finalList = filteredListCan(json.waterfalls)
-        }
+        // if (can == 'all') {
+        finalList = filteredList(json.waterfalls)
+        // } else {
+        //     finalList = filteredListCan(json.waterfalls)
+        // }
 
         //Hike Distance
         switch (hDis) {
@@ -266,35 +266,35 @@ window.onload=function(){
                 finalList = finalList
         };
 
-        // Compass Heading 
-        switch (comp) {
-            case 'N':
-                finalList = N(finalList)
-                break
-            case 'NE':
-                finalList = NE(finalList)
-                break
-            case 'E':
-                finalList = E(finalList)
-                break
-            case 'SE':
-                finalList = SE(finalList)
-                break
-            case 'S':
-                finalList = S(finalList)
-                break
-            case 'SW':
-                finalList = SW(finalList)
-                break
-            case 'W':
-                finalList = W(finalList)
-                break
-            case 'NW':
-                finalList = NW(finalList)
-                break
-            default:
-                finalList = finalList
-        }
+        // // Compass Heading 
+        // switch (comp) {
+        //     case 'N':
+        //         finalList = N(finalList)
+        //         break
+        //     case 'NE':
+        //         finalList = NE(finalList)
+        //         break
+        //     case 'E':
+        //         finalList = E(finalList)
+        //         break
+        //     case 'SE':
+        //         finalList = SE(finalList)
+        //         break
+        //     case 'S':
+        //         finalList = S(finalList)
+        //         break
+        //     case 'SW':
+        //         finalList = SW(finalList)
+        //         break
+        //     case 'W':
+        //         finalList = W(finalList)
+        //         break
+        //     case 'NW':
+        //         finalList = NW(finalList)
+        //         break
+        //     default:
+        //         finalList = finalList
+        // }
 
         event.preventDefault()
 

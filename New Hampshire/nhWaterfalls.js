@@ -6,7 +6,7 @@ const json = (() => {
     $.ajax({
         'async': false,
         'global': false,
-        'url': "./Vermont Waterfalls.json", //Json file location
+        'url': "./New Hampshire Waterfalls.json", //Json file location
         'dataType': "json",
         'success': function(data) {
         json = data;
@@ -203,13 +203,11 @@ window.onload=function(){
         let bR = document.getElementById("beautyRating_input").value
         let pR = document.getElementById("photoRating_input").value
         let hD = document.getElementById("hikeDifficulty_input").value
-        // let elv = document.getElementById("elevation_input").value 
+        // let elv = document.getElementById("elevation_input").value
         // let can = document.getElementById("canopy_input").value
         let hDis = document.getElementById("hikeDistance_input").value
         // let comp = document.getElementById("compass_input").value
 
-        // console.log(elv, can, comp);
-        
         // if (elv == 0) {
         //     elv = 10000
         // }
@@ -217,7 +215,7 @@ window.onload=function(){
             hD = 10
         }
 
-        console.log(bR, pR, hD, hDis,)
+        // console.log(bR, pR, hD, elv, can, hDis, comp)
 
         const filteredList = array => array
             .filter(location => location.beauty >= bR)
@@ -309,15 +307,15 @@ window.onload=function(){
 }
 
 
-// //* For Compass Heading
-// const N = array => array.filter(location => location.compass >=338 || location.compass <=22)
-// const NE = array => array.filter(location => location.compass >=23 && location.compass <=67)
-// const E = array => array.filter(location => location.compass >=68 && location.compass <=112)
-// const SE = array => array.filter(location => location.compass >=113 && location.compass <=157)
-// const S = array => array.filter(location => location.compass >=158 && location.compass <=202)
-// const SW = array => array.filter(location => location.compass >=203 && location.compass <=247)
-// const W = array => array.filter(location => location.compass >=248 && location.compass <=292)
-// const NW = array => array.filter(location => location.compass >=293 && location.compass <=337)
+//* For Compass Heading
+const N = array => array.filter(location => location.compass >=338 || location.compass <=22)
+const NE = array => array.filter(location => location.compass >=23 && location.compass <=67)
+const E = array => array.filter(location => location.compass >=68 && location.compass <=112)
+const SE = array => array.filter(location => location.compass >=113 && location.compass <=157)
+const S = array => array.filter(location => location.compass >=158 && location.compass <=202)
+const SW = array => array.filter(location => location.compass >=203 && location.compass <=247)
+const W = array => array.filter(location => location.compass >=248 && location.compass <=292)
+const NW = array => array.filter(location => location.compass >=293 && location.compass <=337)
 
 //* For Hike Distance
 const lessThanTenth = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.1)
