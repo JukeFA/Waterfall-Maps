@@ -167,10 +167,28 @@ function initMap() {
         });
         // When Marker clicked
         //TODO (later) Make More pretty
+
+        var latLetter;
+        var lngLetter;
+
+        if (data.lat > 0){
+            let latLetter = "N";
+        } else {
+            let latLetter = "S";
+        }
+
+        if (data.lng > 0){
+            let lngLetter = "E";
+        } else {
+            let lngLetter = "W";
+        }
+
         var details = `<div class="marker"><strong><h3>${data.title}</h3></strong> 
                         Beauty Rating: <span class="number">${data.beauty}</span> Photo Rating: <span class="number">${data.photo}</span>
                         <br> Hike Difficulty: <span class="number">${data.hDifficulty}</span> Hike Distance: <span class="number">${data.hDistance}</span>
-                        <br> Page Number: <span class="number">page ${data.pageNumber}</span><div>
+                        <br> Page Number: <span class="number">page ${data.pageNumber}</span>
+                        <br> Lat & Lng: <span class="number"> N ${data.lat}, W ${Math.abs(data.lng)}</span>
+                        <div> <br>
                         <a href="https://www.google.com/maps/dir/?api=1&destination=${data.lat},${data.lng}" target="_blank" class="button" style="margin-top:100px">Click Here For Directions</a>
                         `
 
