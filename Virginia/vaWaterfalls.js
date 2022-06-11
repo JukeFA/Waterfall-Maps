@@ -137,7 +137,7 @@ function initMap() {
                 var marker = new google.maps.Marker({
                     position: pos,
                     map: map,
-                    icon: './img/pngfuel.com.png',
+                    icon: '/img/pngfuel.com.png',
                     title: "Current Location"
                 });
             },
