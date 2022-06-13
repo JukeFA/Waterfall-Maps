@@ -1,6 +1,7 @@
 let map;
 const infowindow = new google.maps.InfoWindow();
 
+// import all JSON
 const CTjson = (() => {
     var json = null;
     $.ajax({
@@ -127,6 +128,7 @@ const WVjson = (() => {
     return json;
 })();
 
+// Dark mode CSS
 let dark =  [
     { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
     { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
@@ -208,6 +210,7 @@ let dark =  [
     },
 ]
 
+// Light mode CSS
 let light = [
     {
         "featureType": "all",
@@ -219,9 +222,10 @@ let light = [
         ]
     }
 ]
-
+// For dark mode
 let darkTest = window.matchMedia('(prefers-color-scheme: dark)').matches
 
+// Map JSON to Variables
 var ctWaterfalls = CTjson.waterfalls;
 var maWaterfalls = MAjson.waterfalls;
 var ncWaterfalls = NCjson.waterfalls;
@@ -232,10 +236,11 @@ var vtWaterfalls = VTjson.waterfalls;
 var vaWaterfalls = VAjson.waterfalls;
 var wvWaterfalls = WVjson.waterfalls;
 
+// Trunk together
 var waterfalls = [ ...ctWaterfalls, ...maWaterfalls, ...ncWaterfalls, ...paWaterfalls, ...riWaterfalls, ...tnWaterfalls, ...vtWaterfalls, ...vaWaterfalls, ...wvWaterfalls ];
 
-console.log(waterfalls);
-
+let infoWindow = new google.maps.InfoWindow();
+//! Map Start
 function initMap() {
 
     var mapProp = {
@@ -247,31 +252,32 @@ function initMap() {
 
     let infoWindow = new google.maps.InfoWindow();
 
-    // if (navigator.geolocation) {
-    //     navigator.geolocation.getCurrentPosition(
-    //         position => {
-    //             const pos = {
-    //                 lat: position.coords.latitude,
-    //                 lng: position.coords.longitude
-    //             };
-    //             console.log(pos)
-    //             infoWindow.setPosition(pos);
-    //             map.setCenter(pos);
-    //             var marker = new google.maps.Marker({
-    //                 position: pos,
-    //                 map: map,
-    //                 icon: './img/pngfuel.com.png',
-    //                 title: "Current Location"
-    //             });
-    //         },
-    //         () => {
-    //         handleLocationError(true, infoWindow, map.getCenter());
-    //         }
-    //     );
-    // } else {
-    //     // Browser doesn't support Geolocation
-    //     handleLocationError(false, infoWindow, map.getCenter());
-    // }
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            position => {
+                pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                console.log(pos)
+                infoWindow.setPosition(pos);
+                map.setCenter(pos);
+                var marker = new google.maps.Marker({
+                    position: pos,
+                    map: map,
+                    //! icon: './img/pngfuel.com.png', **** Fix me ****
+                    title: "Current Location"
+                });
+                const latitude = pos.lat;
+            },
+            () => {
+            handleLocationError(true, infoWindow, map.getCenter());
+            },
+        );
+    } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+    }
 
     map = new google.maps.Map(document.getElementById("map"), mapProp);
 
@@ -303,6 +309,7 @@ function initMap() {
     });
 }
 
+// Geolocation Check
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
     infoWindow.setContent(
@@ -312,7 +319,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     );
     infoWindow.open(map);
 }
-
+// Marker on click
 function bindInfoWindow(marker, map, infowindow, strDescription) {
     google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(strDescription);
@@ -320,11 +327,13 @@ function bindInfoWindow(marker, map, infowindow, strDescription) {
         infowindow.open(map, marker);
     });
 }
-
+// Map load on window load
 google.maps.event.addDomListener(window, 'load', initMap);
 
+// Sorting Function
 window.onload=function(){
     function logSubmit(event) {
+        // Pull values from fields
         let bR = document.getElementById("beautyRating_input").value
         let pR = document.getElementById("photoRating_input").value
         let hD = document.getElementById("hikeDifficulty_input").value
@@ -332,7 +341,9 @@ window.onload=function(){
         let can = document.getElementById("canopy_input").value
         let hDis = document.getElementById("hikeDistance_input").value
         let comp = document.getElementById("compass_input").value
+        let range = document.getElementById("range_input").value
 
+        // Set defaults
         if (elv == 0) {
             elv = 10000
         }
@@ -340,15 +351,15 @@ window.onload=function(){
             hD = 10
         }
 
-        console.log(bR, pR, hD, elv, can, hDis, comp)
-
+        console.log(bR, pR, hD, elv, can, hDis, comp, range)
+        // Filtered list without Canopy
         const filteredList = array => array
             .filter(location => location.beauty >= bR)
             .filter(location => location.photo >= pR)
             .filter(location => location.hDifficulty <= hD)
             .filter(location => location.elevation <= elv)
             // .filter(location => location.canopy = can)
-
+        // Filtered list with Canopy
         const filteredListCan = array => array
             .filter(location => location.beauty >= bR)
             .filter(location => location.photo >= pR)
@@ -357,7 +368,7 @@ window.onload=function(){
             .filter(location => location.canopy == can)
 
         let finalList = []
-
+        // Canopy Check
         if (can == 'all') {
             finalList = filteredList(waterfalls)
         } else {
@@ -420,9 +431,10 @@ window.onload=function(){
             default:
                 finalList = finalList
         }
-
+        // Stop Default values from showing
         event.preventDefault()
 
+        // override original
         waterfalls = finalList
         initMap()
 
@@ -452,6 +464,36 @@ const lessThanTwo = array => array.filter(location => location.hDistance.split('
 const moreThanTwo = array => array.filter(location => location.hDistance.split(' ')[0] > 2.0 && location.hDistance.toLowerCase().split(' ')[1] != "yards" && location.hDistance.toLowerCase().split(' ')[1] != "feet")
 
 
+function getPosition() {
+    // Simple wrapper
+    return new Promise((res, rej) => {
+        navigator.geolocation.getCurrentPosition(res, rej);
+    });
+}
 
+function main() {
+    getPosition().then(console.log); // wait for getPosition to complete
+}
+
+main();
+
+//TODO Calculate information for Lat and Long vs Miles
+// One degree of latitude equals 68.9 miles
+const c = 24902.0; // earth circumference in miles
+var longDistance = Math.cos( location.lat*Math.PI/180.0 )*c/360.0;
+
+
+//const twentyFiveMiles = array => array.filter(location => location.lat >= 0.362844702467344
+//Format
+function formatOutput(num)
+{
+	if (num > 10) 
+		return parseInt(num);
+	return Math.round(num*100)/100;
+}
+
+
+
+// One-degree of longitude equals 54.6 miles
 
 //TODO 4. Make the Waterfall Names Searchable 
