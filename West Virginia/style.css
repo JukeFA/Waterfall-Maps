@@ -45,12 +45,12 @@ h3 {
 }
 
 .number {
-    font-size: 1.3vh;
+    font-size: 12pt;
     font-weight: bold;
 }
 
 .button {
-    font: bold 1.2vh Arial;
+    font: bold 11px Arial;
     text-decoration: none;
     background-color: #EEEEEE;
     color: #333333;
