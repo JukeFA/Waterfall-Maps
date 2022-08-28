@@ -265,11 +265,7 @@ function initMap() {
                 var marker = new google.maps.Marker({
                     position: pos,
                     map: map,
-<<<<<<< Updated upstream
                     icon: '/img/You are here.png', 
-=======
-                    icon: './img/pngfuel.com.png',
->>>>>>> Stashed changes
                     title: "Current Location"
                 });
                 const latitude = pos.lat;
