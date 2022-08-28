@@ -6,7 +6,7 @@ const json = (() => {
     $.ajax({
         'async': false,
         'global': false,
-        'url': "./Wesst Virginia Waterfalls.json", //Json file location
+        'url': "./West Virginia Waterfalls.json", //Json file location
         'dataType': "json",
         'success': function(data) {
         json = data;
