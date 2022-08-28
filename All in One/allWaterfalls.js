@@ -105,7 +105,7 @@ const VAjson = (() => {
     $.ajax({
         'async': false,
         'global': false,
-        'url': "/Virginia/Virginia Waterfalls.json", //Json file location
+        'url': "../Virginia/Virginia Waterfalls.json", //Json file location
         'dataType': "json",
         'success': function(data) {
         json = data;
