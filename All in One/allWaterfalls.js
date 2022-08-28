@@ -7,7 +7,7 @@ const CTjson = (() => {
     $.ajax({
         'async': false,
         'global': false,
-        'url': "/Connecticut/Connecticut Waterfalls.json", //Json file location
+        'url': "../Connecticut/Connecticut Waterfalls.json", //Json file location
         'dataType': "json",
         'success': function(data) {
         json = data;
@@ -21,7 +21,7 @@ const MAjson = (() => {
     $.ajax({
         'async': false,
         'global': false,
-        'url': "/Massachusetts/Massachusetts Waterfalls.json", //Json file location
+        'url': "../Massachusetts/Massachusetts Waterfalls.json", //Json file location
         'dataType': "json",
         'success': function(data) {
         json = data;
@@ -35,7 +35,7 @@ const NCjson = (() => {
     $.ajax({
         'async': false,
         'global': false,
-        'url': "/North Carolina/North Carolina Waterfalls.json", //Json file location
+        'url': "../North Carolina/North Carolina Waterfalls.json", //Json file location
         'dataType': "json",
         'success': function(data) {
         json = data;
@@ -49,7 +49,7 @@ const PAjson = (() => {
     $.ajax({
         'async': false,
         'global': false,
-        'url': "/Pennsylvania/Pennsylvania Waterfalls.json", //Json file location
+        'url': "../Pennsylvania/Pennsylvania Waterfalls.json", //Json file location
         'dataType': "json",
         'success': function(data) {
         json = data;
@@ -63,7 +63,7 @@ const RIjson = (() => {
     $.ajax({
         'async': false,
         'global': false,
-        'url': "/Rhode Island/Rhode Island Waterfalls.json", //Json file location
+        'url': "../Rhode Island/Rhode Island Waterfalls.json", //Json file location
         'dataType': "json",
         'success': function(data) {
         json = data;
@@ -77,7 +77,7 @@ const TNjson = (() => {
     $.ajax({
         'async': false,
         'global': false,
-        'url': "/Tennessee/Tennessee Waterfalls.json", //Json file location
+        'url': "../Tennessee/Tennessee Waterfalls.json", //Json file location
         'dataType': "json",
         'success': function(data) {
         json = data;
@@ -91,7 +91,7 @@ const VTjson = (() => {
     $.ajax({
         'async': false,
         'global': false,
-        'url': "/Vermont/Vermont Waterfalls.json", //Json file location
+        'url': "../Vermont/Vermont Waterfalls.json", //Json file location
         'dataType': "json",
         'success': function(data) {
         json = data;
@@ -105,7 +105,7 @@ const VAjson = (() => {
     $.ajax({
         'async': false,
         'global': false,
-        'url': "/Virginia/Virginia Waterfalls.json", //Json file location
+        'url': "../Virginia/Virginia Waterfalls.json", //Json file location
         'dataType': "json",
         'success': function(data) {
         json = data;
@@ -119,7 +119,7 @@ const WVjson = (() => {
     $.ajax({
         'async': false,
         'global': false,
-        'url': "/West Virginia/Wesst Virginia Waterfalls.json", //Json file location
+        'url': "../West Virginia/Wesst Virginia Waterfalls.json", //Json file location
         'dataType': "json",
         'success': function(data) {
         json = data;
