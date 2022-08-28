@@ -7,7 +7,7 @@ const CTjson = (() => {
     $.ajax({
         'async': false,
         'global': false,
-        'url': "../Connecticut/Connecticut%20Waterfalls.json", //Json file location
+        'url': "../Connecticut/Connecticut Waterfalls.json", //Json file location
         'dataType': "json",
         'success': function(data) {
         json = data;
