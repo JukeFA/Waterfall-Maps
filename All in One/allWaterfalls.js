@@ -265,7 +265,11 @@ function initMap() {
                 var marker = new google.maps.Marker({
                     position: pos,
                     map: map,
+<<<<<<< Updated upstream
                     icon: '/img/You are here.png', 
+=======
+                    icon: './img/pngfuel.com.png',
+>>>>>>> Stashed changes
                     title: "Current Location"
                 });
                 const latitude = pos.lat;
@@ -334,14 +338,14 @@ google.maps.event.addDomListener(window, 'load', initMap);
 window.onload=function(){
     function logSubmit(event) {
         // Pull values from fields
-        let bR = document.getElementById("beautyRating_input").value
-        let pR = document.getElementById("photoRating_input").value
-        let hD = document.getElementById("hikeDifficulty_input").value
-        let elv = document.getElementById("elevation_input").value
-        let can = document.getElementById("canopy_input").value
-        let hDis = document.getElementById("hikeDistance_input").value
-        let comp = document.getElementById("compass_input").value
-        let range = document.getElementById("range_input").value
+        let bR = document.getElementById("beautyRating_input").value                        //Beauty rating
+        let pR = document.getElementById("photoRating_input").value                         //Photo Rating
+        let hD = document.getElementById("hikeDifficulty_input").value                      //Hike Difficulty
+        let elv = document.getElementById("elevation_input").value                          //Elevation
+        let can = document.getElementById("canopy_input").value                             //Canopy
+        let hDis = document.getElementById("hikeDistance_input").value                      //Hike Distance
+        let comp = document.getElementById("compass_input").value                           //Compass
+        let range = document.getElementById("range_input").value                            //Distance Away
 
         // Set defaults
         if (elv == 0) {
@@ -350,8 +354,15 @@ window.onload=function(){
         if (hD == 0) {
             hD = 10
         }
+        
+        console.log('Beauty', bR)
+        console.log('Photo', pR)
+        console.log('Elevation', elv)
+        console.log('Canopy', can)
+        console.log('Hike Distance', hDis)
+        console.log('Compass', comp)
+        console.log('Hike Difficulty', range)
 
-        console.log(bR, pR, hD, elv, can, hDis, comp, range)
         // Filtered list without Canopy
         const filteredList = array => array
             .filter(location => location.beauty >= bR)
@@ -464,33 +475,33 @@ const lessThanTwo = array => array.filter(location => location.hDistance.split('
 const moreThanTwo = array => array.filter(location => location.hDistance.split(' ')[0] > 2.0 && location.hDistance.toLowerCase().split(' ')[1] != "yards" && location.hDistance.toLowerCase().split(' ')[1] != "feet")
 
 
-function getPosition() {
-    // Simple wrapper
-    return new Promise((res, rej) => {
-        navigator.geolocation.getCurrentPosition(res, rej);
-    });
-}
+// function getPosition() {
+//     // Simple wrapper
+//     return new Promise((res, rej) => {
+//         navigator.geolocation.getCurrentPosition(res, rej);
+//     });
+// }
 
-function main() {
-    getPosition().then(console.log); // wait for getPosition to complete
-}
+// function main() {
+//     getPosition().then(console.log); // wait for getPosition to complete
+// }
 
-main();
+// main();
 
-//TODO Calculate information for Lat and Long vs Miles
-// One degree of latitude equals 68.9 miles
-const c = 24902.0; // earth circumference in miles
-var longDistance = Math.cos( location.lat*Math.PI/180.0 )*c/360.0;
+// //TODO Calculate information for Lat and Long vs Miles
+// // One degree of latitude equals 68.9 miles
+// const c = 24902.0; // earth circumference in miles
+// var longDistance = Math.cos( location.lat*Math.PI/180.0 )*c/360.0;
 
 
-//const twentyFiveMiles = array => array.filter(location => location.lat >= 0.362844702467344
-//Format
-function formatOutput(num)
-{
-	if (num > 10) 
-		return parseInt(num);
-	return Math.round(num*100)/100;
-}
+// //const twentyFiveMiles = array => array.filter(location => location.lat >= 0.362844702467344
+// //Format
+// function formatOutput(num)
+// {
+// 	if (num > 10) 
+// 		return parseInt(num);
+// 	return Math.round(num*100)/100;
+// }
 
 
 
