@@ -1,6 +1,14 @@
 let map;
 const infowindow = new google.maps.InfoWindow();
 
+//Get Geolocation
+var userLocation
+
+navigator.geolocation.getCurrentPosition(userLocation, Console.log);
+
+console.log(userLocation);
+
+
 // import all JSON
 const CTjson = (() => {
     var json = null;
@@ -16,6 +24,19 @@ const CTjson = (() => {
     return json;
 })();
 
+const MEjson = (() => {
+    var json= null;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': "../Maine/Maine Waterfalls.json", //Json file location
+        'dataType': "json",
+        'success': function(data) {
+            json = data;
+        }
+    });
+})();
+
 const MAjson = (() => {
     var json = null;
     $.ajax({
@@ -29,6 +50,35 @@ const MAjson = (() => {
     });
     return json;
 })();
+
+const NHjson = (() => {
+    var json = null;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': "../New Hampshire/New Hampshire Waterfalls.json", //Json file location
+        'dataType': "json",
+        'success': function(data) {
+        json = data;
+    }
+    });
+    return json;
+})();
+
+const NYjson = (() => {
+    var json = null;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': "../New York/New York Waterfalls.json", //Json file location
+        'dataType': "json",
+        'success': function(data) {
+        json = data;
+    }
+    });
+    return json;
+})();
+
 
 const NCjson = (() => {
     var json = null;
@@ -227,7 +277,10 @@ let darkTest = window.matchMedia('(prefers-color-scheme: dark)').matches
 
 // Map JSON to Variables
 var ctWaterfalls = CTjson.waterfalls;
+var meWaterfalls = MEjson.waterfalls;
 var maWaterfalls = MAjson.waterfalls;
+var nhwaterfalls = NHjson.waterfalls;
+var nywaterfalls = NYjson.waterfalls;
 var ncWaterfalls = NCjson.waterfalls;
 var paWaterfalls = PAjson.waterfalls;
 var riWaterfalls = RIjson.waterfalls;
@@ -237,7 +290,7 @@ var vaWaterfalls = VAjson.waterfalls;
 var wvWaterfalls = WVjson.waterfalls;
 
 // Trunk together
-var waterfalls = [ ...ctWaterfalls, ...maWaterfalls, ...ncWaterfalls, ...paWaterfalls, ...riWaterfalls, ...tnWaterfalls, ...vtWaterfalls, ...vaWaterfalls, ...wvWaterfalls ];
+var waterfalls = [ ...ctWaterfalls, ...meWaterfalls, ...maWaterfalls, ...nhwaterfalls, ...nhwaterfalls, ...ncWaterfalls, ...paWaterfalls, ...riWaterfalls, ...tnWaterfalls, ...vtWaterfalls, ...vaWaterfalls, ...wvWaterfalls ];
 
 let infoWindow = new google.maps.InfoWindow();
 //! Map Start
