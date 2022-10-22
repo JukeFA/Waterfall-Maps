@@ -1,12 +1,36 @@
 let map;
 const infowindow = new google.maps.InfoWindow();
 
-//Get Geolocation
-var userLocation
+// Get Geolocation
+// Creating a promise out of the function
+let getLocationPromise = new Promise((resolve, reject) => {
+    if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
 
-navigator.geolocation.getCurrentPosition(userLocation, Console.log);
+            // console.log(position.coords.latitude, position.coords.longitude) //test...
 
-console.log(userLocation);
+            lat = position.coords.latitude
+            long = position.coords.longitude
+
+            // console.log("LATLONG1: ", lat, long) //test...
+
+            // Resolving the values which I need
+            resolve({latitude: lat, 
+                    longitude: long})
+        })
+
+    } else {
+        reject("your browser doesn't support geolocation API")
+    }
+})
+
+// Now I can use the promise followed by .then() 
+// to make use of the values anywhere in the program
+getLocationPromise.then((location) => {
+    
+}).catch((err) => {
+    console.log(err)
+})
 
 
 // import all JSON
@@ -35,6 +59,7 @@ const MEjson = (() => {
             json = data;
         }
     });
+    return json;
 })();
 
 const MAjson = (() => {
