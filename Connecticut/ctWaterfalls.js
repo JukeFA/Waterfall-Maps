@@ -136,7 +136,7 @@ function initMap() {
                 var marker = new google.maps.Marker({
                     position: pos,
                     map: map,
-                    icon: '/img/You are here.png',
+                    icon: '/Waterfall-Maps/img/You are here.png',
                     title: "Current Location"
                 });
             },
