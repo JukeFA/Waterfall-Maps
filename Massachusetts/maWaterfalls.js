@@ -200,8 +200,11 @@ function bindInfoWindow(marker, map, infowindow, strDescription) {
 
 google.maps.event.addDomListener(window, 'load', initMap);
 
+
+
 window.onload=function(){
     function logSubmit(event) {
+
         let bR = document.getElementById("beautyRating_input").value
         let pR = document.getElementById("photoRating_input").value
         let hD = document.getElementById("hikeDifficulty_input").value
@@ -320,6 +323,7 @@ const W = array => array.filter(location => location.compass >=248 && location.c
 const NW = array => array.filter(location => location.compass >=293 && location.compass <=337)
 
 //* For Hike Distance
+
 const lessThanTenth = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.1)
 const lessThanQuarter = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.25)
 const lessThanHalf = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 0.5)
@@ -327,8 +331,5 @@ const lessThanThreeQuarter = array => array.filter(location => location.hDistanc
 const lessThanOne = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 1)
 const lessThanTwo = array => array.filter(location => location.hDistance.split(' ')[1] == "yards" || location.hDistance.split(' ')[1] == "feet" || location.hDistance.split(' ')[0] <= 2)
 const moreThanTwo = array => array.filter(location => location.hDistance.split(' ')[0] > 2.0 && location.hDistance.toLowerCase().split(' ')[1] != "yards" && location.hDistance.toLowerCase().split(' ')[1] != "feet")
-
-
-
 
 //TODO 4. Make the Waterfall Names Searchable 
