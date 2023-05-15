@@ -34,6 +34,20 @@ getLocationPromise.then((location) => {
 
 
 // import all JSON
+const CAjson = (() => {
+    var json = null;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': "../California/California Waterfalls.json", //Json file location
+        'dataType': "json",
+        'success': function(data) {
+        json = data;
+    }
+    });
+    return json;
+})();
+
 const CTjson = (() => {
     var json = null;
     $.ajax({
@@ -125,6 +139,20 @@ const NCjson = (() => {
         'async': false,
         'global': false,
         'url': "../North Carolina/North Carolina Waterfalls.json", //Json file location
+        'dataType': "json",
+        'success': function(data) {
+        json = data;
+    }
+    });
+    return json;
+})();
+
+const ORjson = (() => {
+    var json = null;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': "../Oregon/Oregon Waterfalls.json", //Json file location
         'dataType': "json",
         'success': function(data) {
         json = data;
@@ -329,6 +357,7 @@ let light = [
 let darkTest = window.matchMedia('(prefers-color-scheme: dark)').matches
 
 // Map JSON to Variables
+var caWaterfalls = CAjson.waterfalls;
 var ctWaterfalls = CTjson.waterfalls;
 var kyWaterfalls = KYjson.waterfalls;
 var meWaterfalls = MEjson.waterfalls;
@@ -336,6 +365,7 @@ var maWaterfalls = MAjson.waterfalls;
 var nhWaterfalls = NHjson.waterfalls;
 var nyWaterfalls = NYjson.waterfalls;
 var ncWaterfalls = NCjson.waterfalls;
+var orWaterfalls = ORjson.waterfalls;
 var paWaterfalls = PAjson.waterfalls;
 var riWaterfalls = RIjson.waterfalls;
 var tnWaterfalls = TNjson.waterfalls;
@@ -346,7 +376,7 @@ var wvWaterfalls = WVjson.waterfalls;
 
 
 // Trunk together
-var waterfalls = [ ...ctWaterfalls, ...kyWaterfalls, ...meWaterfalls, ...maWaterfalls, ...nhWaterfalls, ...nhWaterfalls, ...ncWaterfalls, ...paWaterfalls, ...riWaterfalls, ...tnWaterfalls, ...vtWaterfalls, ...vaWaterfalls, ...waWaterfalls, ...wvWaterfalls ];
+var waterfalls = [ ...caWaterfalls, ...ctWaterfalls, ...kyWaterfalls, ...meWaterfalls, ...maWaterfalls, ...nhWaterfalls, ...nyWaterfalls, ...ncWaterfalls, ...orWaterfalls, ...paWaterfalls, ...riWaterfalls, ...tnWaterfalls, ...vtWaterfalls, ...vaWaterfalls, ...waWaterfalls, ...wvWaterfalls ];
 
 let infoWindow = new google.maps.InfoWindow();
 //! Map Start
