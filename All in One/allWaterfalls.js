@@ -440,9 +440,8 @@ function initMap() {
                         Beauty Rating: <span class="number">${data.beauty}</span> Photo Rating: <span class="number">${data.photo}</span>
                         <br> Hike Difficulty: <span class="number">${data.hDifficulty}</span> Hike Distance: <span class="number">${data.hDistance}</span>
                         <br> Compass Heading: <span class="number">${data.compass}</span> Elevation: <span class="number">${data.elevation}</span>
-                        <br> Page Number: <span class="number">page ${data.pageNumber}</span> Canopy: <span class="number">${data.canopy}</span><div>
-                        <a href="https://www.google.com/maps/dir/?api=1&destination=${data.lat},${data.lng}" target="_blank" class="button" style="margin-top:100px">Click Here For Directions</a>
-                        `
+                        <br> Page Number: <span class="number">page ${data.pageNumber}</span> Canopy: <span class="number">${data.canopy}</span>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=${data.lat},${data.lng}" target="_blank" class="button">Click Here For Directions</a></div>`
 
         bindInfoWindow(marker, map, infowindow, details);
     });
@@ -511,7 +510,7 @@ window.onload=function(){
             .filter(location => location.photo >= pR)
             .filter(location => location.hDifficulty <= hD)
             .filter(location => location.elevation <= elv)
-            .filter(location => location.canopy == can)
+            .filter(location => can == "all" || location.canopy == can)
 
         let finalList = []
         // Canopy Check

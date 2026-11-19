@@ -172,9 +172,7 @@ function initMap() {
                         <br> Hike Difficulty: <span class="number">${data.hDifficulty}</span> Hike Distance: <span class="number">${data.hDistance}</span>
                         <br> Page Number: <span class="number">page ${data.pageNumber}</span>
                         <br> Lat & Lng: <span class="number"> N ${data.lat}, W ${Math.abs(data.lng)}</span>
-                        <div> <br>
-                        <a href="https://www.google.com/maps/dir/?api=1&destination=${data.lat},${data.lng}" target="_blank" class="button" style="margin-top:100px">Click Here For Directions</a>
-                        `
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=${data.lat},${data.lng}" target="_blank" class="button">Click Here For Directions</a></div>`
 
         bindInfoWindow(marker, map, infowindow, details);
     });
@@ -231,7 +229,7 @@ window.onload=function(){
         //     .filter(location => location.photo >= pR)
         //     .filter(location => location.hDifficulty <= hD)
         //     .filter(location => location.elevation <= elv)
-        //     .filter(location => location.canopy == can)
+        //     .filter(location => can == "all" || location.canopy == can)
 
         let finalList = []
 
